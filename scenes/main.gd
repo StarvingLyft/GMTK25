@@ -59,6 +59,7 @@ func _process(delta: float) -> void:
 	if replay_index >= recorded_inputs.size():
 		print("--- Replay Finished ---")
 		is_replaying = false
+		$player.is_replaying=false
 		return
 
 	# Calculate how much time has passed since the replay started.
@@ -73,13 +74,22 @@ func _process(delta: float) -> void:
 		var is_pressed: bool = next_event.pressed
 
 		# Simulate the input action using Godot's Input singleton.
-		if is_pressed:
-			Input.action_press(action)
-			print("Replaying: PRESS ",action)
-		else:
-			Input.action_release(action)
-			print("Replaying: RELEASE ",action)
-			
+		#if is_pressed:
+			#Input.action_press(action)
+			#print("Replaying: PRESS ",action)
+		#else:
+			#Input.action_release(action)
+			#print("Replaying: RELEASE ",action)
+		print("Replaying: PRESS ",action)
+		match action:
+					"jump":
+						if is_pressed and $player.is_on_floor():
+							$player.velocity.y = $player.jump_speed
+					"right":
+						$player.velocity.x = $player.speed if is_pressed else 0
+					"left":
+						$player.velocity.x = -$player.speed if is_pressed else 0
+		print("Replaying: RELEASE ",action)
 		# Move to the next event for the next frame.
 		replay_index += 1
 
@@ -104,6 +114,7 @@ func start_replaying() -> void:
 		
 	print("--- ▶️ Started Replay ---")
 	is_replaying = true
+	$player.is_replaying = true
 	is_recording = false # Can't replay and record.
 	replay_index = 0
 	start_time_msec = Time.get_ticks_msec()
