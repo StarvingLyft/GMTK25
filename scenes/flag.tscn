@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://dcbqvypjtkxhm"]
 
-[ext_resource type="Texture2D" uid="uid://cbplofkvtx10s" path="res://assets/Fonts/kenney/PNG/White/1x/question.png" id="1_gw2ue"]
 [ext_resource type="Script" path="res://scenes/flag.gd" id="1_jej32"]
 [ext_resource type="Texture2D" uid="uid://cy2mjajvmb1e8" path="res://assets/Fonts/kenney/PNG/White/1x/star.png" id="2_sydhs"]
+[ext_resource type="Texture2D" uid="uid://cbplofkvtx10s" path="res://assets/Fonts/question.png" id="2_yq2ar"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qvfrc"]
 size = Vector2(32, 34)
@@ -14,7 +14,8 @@ script = ExtResource("1_jej32")
 shape = SubResource("RectangleShape2D_qvfrc")
 
 [node name="qMark" type="Sprite2D" parent="."]
-texture = ExtResource("1_gw2ue")
+texture = ExtResource("2_yq2ar")
+offset = Vector2(0, -2.08)
 
 [node name="trueIcon" type="Sprite2D" parent="."]
 visible = false

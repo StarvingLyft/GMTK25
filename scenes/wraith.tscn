@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://p3dox7tfpt6n"]
+
+[ext_resource type="Texture2D" uid="uid://drkf4rcjrrvys" path="res://assets/Rogues32/32rogues/monsters.png" id="1_2afhk"]
+[ext_resource type="Script" path="res://scenes/wraith.gd" id="1_127yl"]
+[ext_resource type="Texture2D" uid="uid://cbplofkvtx10s" path="res://assets/Fonts/question.png" id="1_gnawt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gibo6"]
+size = Vector2(19, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ppd5g"]
+atlas = ExtResource("1_2afhk")
+region = Rect2(64, 160, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_weskv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ppd5g")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="wraith" type="Area2D"]
+scale = Vector2(1.8, 1.8)
+script = ExtResource("1_127yl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.5, -0.5)
+shape = SubResource("RectangleShape2D_gibo6")
+
+[node name="qMark" type="Sprite2D" parent="."]
+position = Vector2(1.5, -2.5)
+scale = Vector2(0.94, 0.9)
+texture = ExtResource("1_gnawt")
+
+[node name="trueIcon" type="AnimatedSprite2D" parent="."]
+visible = false
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_weskv")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

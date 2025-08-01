@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 var speed = 300.0
-var jump_speed = -400.0
+var jump_speed = -500.0
 #var is_replaying: bool = false
 
 const MONITORED_ACTIONS: Array[String] = ["jump", "left", "right"]
@@ -142,3 +142,9 @@ func start_replaying() -> void:
 	is_recording = false # Can't replay and record.
 	replay_index = 0
 	start_time_msec = Time.get_ticks_msec()
+	
+func dead():
+	$bilbo.rotate(-90)
+	velocity = Vector2.ZERO
+	await get_tree().create_timer(0.5).timeout
+	set_collision_mask_value(1,false)

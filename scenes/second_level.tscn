@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=3 uid="uid://4prloy673ts3"]
+
+[ext_resource type="Texture2D" uid="uid://dnpc7y0bcui3w" path="res://assets/backgrounds/Rivendell/nature_3/origbig.png" id="1_taaty"]
+[ext_resource type="PackedScene" uid="uid://d1yjmru83wfae" path="res://scenes/ground.tscn" id="2_3qors"]
+[ext_resource type="PackedScene" uid="uid://bnp6swc2iccx3" path="res://scenes/borders.tscn" id="3_kxw6v"]
+[ext_resource type="PackedScene" uid="uid://bkjfd5nktiw5g" path="res://scenes/player.tscn" id="4_yp2a4"]
+[ext_resource type="PackedScene" uid="uid://p3dox7tfpt6n" path="res://scenes/wraith.tscn" id="5_37rce"]
+[ext_resource type="PackedScene" uid="uid://dcbqvypjtkxhm" path="res://scenes/flag.tscn" id="6_vtj2l"]
+
+[node name="SecondLevel" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(576, 324)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_taaty")
+
+[node name="ground" parent="." instance=ExtResource("2_3qors")]
+position = Vector2(28, 659)
+
+[node name="Borders" parent="." instance=ExtResource("3_kxw6v")]
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("4_yp2a4")]
+position = Vector2(45, 543)
+
+[node name="wraith" parent="." instance=ExtResource("5_37rce")]
+position = Vector2(537, 559)
+
+[node name="Star" parent="." instance=ExtResource("6_vtj2l")]
+position = Vector2(391, 449)
+
+[node name="Star2" parent="." instance=ExtResource("6_vtj2l")]
+position = Vector2(691, 453)
