@@ -1,17 +1,57 @@
-[gd_scene load_steps=4 format=3 uid="uid://bkjfd5nktiw5g"]
+[gd_scene load_steps=8 format=3 uid="uid://bkjfd5nktiw5g"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_mbind"]
-[ext_resource type="Texture2D" uid="uid://cueln735fsuo5" path="res://icon.svg" id="1_r7jmq"]
+[ext_resource type="Texture2D" uid="uid://c4ofjg5bxiwk3" path="res://assets/Rogues32/32rogues/rogues.png" id="2_mvqj6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v2lff"]
 size = Vector2(69, 62)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_nk2sp"]
+atlas = ExtResource("2_mvqj6")
+region = Rect2(32, 128, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_um7gn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nk2sp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bretk"]
+atlas = ExtResource("2_mvqj6")
+region = Rect2(128, 192, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_usegj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bretk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_mbind")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.546875, 0.492188)
-texture = ExtResource("1_r7jmq")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_v2lff")
+
+[node name="gandalf" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(2.125, 1.9375)
+sprite_frames = SubResource("SpriteFrames_um7gn")
+frame_progress = 0.452521
+flip_h = true
+
+[node name="bilbo" type="AnimatedSprite2D" parent="."]
+visible = false
+texture_filter = 1
+scale = Vector2(2.1875, 1.9375)
+sprite_frames = SubResource("SpriteFrames_usegj")
+flip_h = true

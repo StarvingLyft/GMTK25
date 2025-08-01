@@ -4,6 +4,7 @@ extends Node2D
 # The actions you want to track. Make sure these exist in your Input Map.
 const MONITORED_ACTIONS: Array[String] = ["jump", "left", "right"]
 const START_POS = Vector2(50,480)
+signal change_sprite;
 
 # This array will store our recorded input data.
 var recorded_inputs: Array = []
@@ -105,13 +106,14 @@ func start_recording() -> void:
 func stop_recording() -> void:
 	print("--- ⏹️ Stopped Recording ---")
 	is_recording = false
+	get_node("player/gandalf").hide()
+	get_node("player/bilbo").show()
 	print("Recorded ",recorded_inputs.size() ," events.")
 
 func start_replaying() -> void:
 	if recorded_inputs.is_empty():
 		print("Nothing to replay!")
 		return
-		
 	print("--- ▶️ Started Replay ---")
 	is_replaying = true
 	$player.is_replaying = true
