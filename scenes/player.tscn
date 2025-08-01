@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c4ofjg5bxiwk3" path="res://assets/Rogues32/32rogues/rogues.png" id="2_mvqj6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v2lff"]
-size = Vector2(69, 62)
+size = Vector2(60, 58)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nk2sp"]
 atlas = ExtResource("2_mvqj6")
@@ -52,6 +52,7 @@ flip_h = true
 [node name="bilbo" type="AnimatedSprite2D" parent="."]
 visible = false
 texture_filter = 1
-scale = Vector2(2.1875, 1.9375)
+position = Vector2(0, -4.83)
+scale = Vector2(2.628, 2.328)
 sprite_frames = SubResource("SpriteFrames_usegj")
 flip_h = true

@@ -4,7 +4,6 @@ extends Node2D
 # The actions you want to track. Make sure these exist in your Input Map.
 const MONITORED_ACTIONS: Array[String] = ["jump", "left", "right"]
 const START_POS = Vector2(50,480)
-signal change_sprite;
 
 # This array will store our recorded input data.
 var recorded_inputs: Array = []

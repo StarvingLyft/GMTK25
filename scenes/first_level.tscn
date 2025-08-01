@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://du6f7f3t44div"]
+
+[ext_resource type="Texture2D" uid="uid://bpdneyxh1o4ra" path="res://assets/backgrounds/Shire/PNG/summer 2/Summer2.png" id="1_epunl"]
+[ext_resource type="PackedScene" uid="uid://bnp6swc2iccx3" path="res://scenes/borders.tscn" id="2_fnfjn"]
+[ext_resource type="PackedScene" uid="uid://d1yjmru83wfae" path="res://scenes/ground.tscn" id="2_gtdg4"]
+[ext_resource type="PackedScene" uid="uid://bkjfd5nktiw5g" path="res://scenes/player.tscn" id="4_gmhir"]
+[ext_resource type="PackedScene" uid="uid://dcbqvypjtkxhm" path="res://scenes/flag.tscn" id="5_rsb5d"]
+
+[node name="FirstLevel" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -1
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_epunl")
+offset = Vector2(1152, 648)
+
+[node name="Borders" parent="." instance=ExtResource("2_fnfjn")]
+
+[node name="ground" parent="." instance=ExtResource("2_gtdg4")]
+position = Vector2(25, 615)
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("4_gmhir")]
+position = Vector2(51, 484)
+
+[node name="Star" parent="." instance=ExtResource("5_rsb5d")]
+position = Vector2(353, 410)
+
+[node name="Star2" parent="." instance=ExtResource("5_rsb5d")]
+position = Vector2(788, 410)

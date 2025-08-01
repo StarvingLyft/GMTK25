@@ -8,6 +8,7 @@ size = Vector2(1241, 110)
 [node name="ground" type="CharacterBody2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(552, -10)
 scale = Vector2(9.625, 0.84375)
 texture = ExtResource("1_njsex")
