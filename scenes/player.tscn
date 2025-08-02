@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c4ofjg5bxiwk3" path="res://assets/Rogues32/32rogues/rogues.png" id="2_mvqj6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v2lff"]
-size = Vector2(60, 58)
+size = Vector2(49, 50)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nk2sp"]
 atlas = ExtResource("2_mvqj6")
@@ -40,6 +40,7 @@ animations = [{
 script = ExtResource("1_mbind")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-5.5, -4)
 shape = SubResource("RectangleShape2D_v2lff")
 
 [node name="gandalf" type="AnimatedSprite2D" parent="."]

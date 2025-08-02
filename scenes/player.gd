@@ -3,9 +3,10 @@ extends CharacterBody2D
 var speed = 300.0
 var jump_speed = -500.0
 #var is_replaying: bool = false
+signal level_reset
 
 const MONITORED_ACTIONS: Array[String] = ["jump", "left", "right"]
-const START_POS = Vector2(50,480)
+@export var START_POS = Vector2(50,480)
 
 # This array will store our recorded input data.
 var recorded_inputs: Array = []
@@ -22,6 +23,8 @@ var replay_index: int = 0
 # Get the gravity from the project settings so you can sync with rigid body nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
+func _ready():
+	start_recording()
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -50,8 +53,8 @@ func _input(event: InputEvent) -> void:
 				icon.get_node("qMark").hide()
 			await get_tree().create_timer(0.5).timeout
 			start_replaying()
-		else:
-			start_recording()
+		#else:
+			#start_recording()
 
 
 	# --- Recording Logic ---
@@ -144,7 +147,10 @@ func start_replaying() -> void:
 	start_time_msec = Time.get_ticks_msec()
 	
 func dead():
+	recorded_inputs.clear()
 	$bilbo.rotate(-90)
 	velocity = Vector2.ZERO
 	await get_tree().create_timer(0.5).timeout
 	set_collision_mask_value(1,false)
+	await get_tree().create_timer(1).timeout
+	level_reset.emit()
