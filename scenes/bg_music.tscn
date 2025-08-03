@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://d2lwogabqwbe1"]
+
+[ext_resource type="AudioStream" uid="uid://b8y0fecu2dsfn" path="res://assets/audio/Goblin_Tinker_Soldier_Spy.mp3" id="1_t1ntj"]
+
+[node name="bg_music" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_t1ntj")
+autoplay = true

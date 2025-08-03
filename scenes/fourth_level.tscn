@@ -1,0 +1,85 @@
+[gd_scene load_steps=8 format=3 uid="uid://cllnmahvfqqfp"]
+
+[ext_resource type="Texture2D" uid="uid://b3b6r5u6crwoa" path="res://assets/backgrounds/MistyMountains/Glacial-mountains-parallax-background_vnitti/background_glacial_mountains.png" id="1_h86oa"]
+[ext_resource type="Script" path="res://scenes/fourth_level.gd" id="1_huw6x"]
+[ext_resource type="PackedScene" uid="uid://bnp6swc2iccx3" path="res://scenes/borders.tscn" id="2_4vhjq"]
+[ext_resource type="PackedScene" uid="uid://bkjfd5nktiw5g" path="res://scenes/player.tscn" id="3_mxd81"]
+[ext_resource type="PackedScene" uid="uid://dcbqvypjtkxhm" path="res://scenes/flag.tscn" id="5_sgckd"]
+[ext_resource type="PackedScene" uid="uid://p3dox7tfpt6n" path="res://scenes/wraith.tscn" id="6_qa05w"]
+[ext_resource type="PackedScene" uid="uid://dyso6ak7f3w4k" path="res://scenes/coin_sound.tscn" id="7_uco5w"]
+
+[node name="FourthLevel" type="Node2D"]
+script = ExtResource("1_huw6x")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(577, 324)
+scale = Vector2(3, 3)
+texture = ExtResource("1_h86oa")
+
+[node name="Floor" type="CharacterBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Floor"]
+position = Vector2(0, 360)
+build_mode = 1
+polygon = PackedVector2Array(11, -15, 50, -48, 95, -44, 163, -88, 195, -88, 219, -72, 289, -65, 303, -39, 326, -40, 340, -10, 418, -16, 425, -35, 453, -41, 453, -63, 482, -69, 487, -92, 515, -96, 520, -123, 555, -133, 563, -153, 591, -170, 626, -135, 636, -87, 661, -85, 689, -37, 718, -35, 740, 11, 794, 10, 852, -20, 860, -44, 886, -47, 916, -87, 935, -91, 948, -114, 969, -128, 991, -110, 1011, -107, 1022, -116, 1077, -62, 1097, -31, 1138, -3, 613, 84)
+
+[node name="Borders" parent="." instance=ExtResource("2_4vhjq")]
+
+[node name="player" parent="." instance=ExtResource("3_mxd81")]
+position = Vector2(27, 290)
+scale = Vector2(0.5, 0.5)
+speed = 150.0
+jump_speed = -350.0
+START_POS = Vector2(27, 290)
+
+[node name="Star" parent="." instance=ExtResource("5_sgckd")]
+position = Vector2(427, 235)
+scale = Vector2(0.5, 0.5)
+
+[node name="Star2" parent="." instance=ExtResource("5_sgckd")]
+position = Vector2(780, 319)
+scale = Vector2(0.5, 0.5)
+
+[node name="Star3" parent="." instance=ExtResource("5_sgckd")]
+position = Vector2(999, 179)
+scale = Vector2(0.5, 0.5)
+
+[node name="wraith" parent="." instance=ExtResource("6_qa05w")]
+position = Vector2(125, 289)
+scale = Vector2(1, 1)
+move_distance = 0.0
+move_time_left = 100.0
+move_time_right = 100.0
+
+[node name="wraith2" parent="." instance=ExtResource("6_qa05w")]
+position = Vector2(349, 345)
+scale = Vector2(1, 1)
+move_distance = 50.0
+move_time_left = 3.0
+move_time_right = 4.0
+
+[node name="wraith3" parent="." instance=ExtResource("6_qa05w")]
+position = Vector2(730, 221)
+scale = Vector2(1, 1)
+move_distance = 50.0
+move_time_left = 3.0
+move_time_right = 4.0
+
+[node name="wraith4" parent="." instance=ExtResource("6_qa05w")]
+position = Vector2(998, 244)
+scale = Vector2(1, 1)
+move_distance = 50.0
+move_time_left = 3.0
+move_time_right = 4.0
+
+[node name="Label" type="Label" parent="."]
+offset_left = 898.0
+offset_top = 28.0
+offset_right = 1145.0
+offset_bottom = 70.0
+theme_override_font_sizes/font_size = 30
+text = "Foggy Mountains"
+
+[node name="coin_sound" parent="." instance=ExtResource("7_uco5w")]
+
+[connection signal="level_reset" from="player" to="." method="_on_player_level_reset"]

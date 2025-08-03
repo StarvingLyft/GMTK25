@@ -1,12 +1,13 @@
 extends CharacterBody2D
 
-var speed = 300.0
-var jump_speed = -500.0
+@export var speed = 300.0
+@export var jump_speed = -500.0
+@export var START_POS = Vector2(50,480)
 #var is_replaying: bool = false
 signal level_reset
 
 const MONITORED_ACTIONS: Array[String] = ["jump", "left", "right"]
-@export var START_POS = Vector2(50,480)
+
 
 # This array will store our recorded input data.
 var recorded_inputs: Array = []
@@ -86,6 +87,9 @@ func _process(delta: float) -> void:
 		recorded_inputs.clear()
 		is_replaying = false
 		is_replaying=false
+		if(get_parent().flag_count!=0):
+			await get_tree().create_timer(1).timeout
+			level_reset.emit()
 		return
 
 	# Calculate how much time has passed since the replay started.
@@ -153,4 +157,5 @@ func dead():
 	await get_tree().create_timer(0.5).timeout
 	set_collision_mask_value(1,false)
 	await get_tree().create_timer(1).timeout
+	$bilbo.set_rotation(0)
 	level_reset.emit()

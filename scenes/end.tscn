@@ -1,0 +1,92 @@
+[gd_scene load_steps=9 format=3 uid="uid://b4gk6d1y17t18"]
+
+[ext_resource type="Texture2D" uid="uid://bj2bpx0dkd2uv" path="res://assets/backgrounds/Mordor/Ocean_7/6.png" id="1_keqwf"]
+[ext_resource type="Script" path="res://scenes/end.gd" id="1_mfbmo"]
+[ext_resource type="Texture2D" uid="uid://c4ofjg5bxiwk3" path="res://assets/Rogues32/32rogues/rogues.png" id="2_3cso3"]
+[ext_resource type="Texture2D" uid="uid://cuo3t3u5rstbb" path="res://assets/Fonts/kenney/PNG/White/1x/buttonR.png" id="3_crr1l"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nk2sp"]
+atlas = ExtResource("2_3cso3")
+region = Rect2(32, 128, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gtby8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nk2sp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bretk"]
+atlas = ExtResource("2_3cso3")
+region = Rect2(128, 192, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_426xm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bretk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="end" type="Node2D"]
+script = ExtResource("1_mfbmo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(576, 324)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_keqwf")
+
+[node name="gandalf" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(800, 480)
+scale = Vector2(3.5, 3.9375)
+sprite_frames = SubResource("SpriteFrames_gtby8")
+flip_h = true
+
+[node name="bilbo" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(754, 538)
+scale = Vector2(2.628, 2.328)
+sprite_frames = SubResource("SpriteFrames_426xm")
+flip_h = true
+
+[node name="Label" type="Label" parent="."]
+offset_left = 483.0
+offset_top = 163.0
+offset_right = 734.0
+offset_bottom = 218.0
+theme_override_font_sizes/font_size = 40
+text = "You made it!!"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 495.0
+offset_top = 222.0
+offset_right = 535.0
+offset_bottom = 245.0
+text = "Press"
+
+[node name="Label3" type="Label" parent="."]
+offset_left = 603.0
+offset_top = 225.0
+offset_right = 645.0
+offset_bottom = 248.0
+text = "to"
+
+[node name="Label4" type="Label" parent="."]
+offset_left = 492.0
+offset_top = 250.0
+offset_right = 736.0
+offset_bottom = 299.0
+text = "CAST THE LOOPS IN THE WATER
+DESTROY THEM!!!!"
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(569, 235)
+texture = ExtResource("3_crr1l")

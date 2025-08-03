@@ -1,0 +1,63 @@
+[gd_scene load_steps=9 format=3 uid="uid://kl7tb4y272tl"]
+
+[ext_resource type="Texture2D" uid="uid://dnpjpdk02chdd" path="res://assets/backgrounds/Moria/0.png" id="1_qft4y"]
+[ext_resource type="Script" path="res://scenes/fifth_level.gd" id="1_sa5v5"]
+[ext_resource type="PackedScene" uid="uid://bkjfd5nktiw5g" path="res://scenes/player.tscn" id="2_se6ok"]
+[ext_resource type="PackedScene" uid="uid://bnp6swc2iccx3" path="res://scenes/borders.tscn" id="3_g1i8g"]
+[ext_resource type="PackedScene" uid="uid://cesice3fjvrmk" path="res://scenes/balrog.tscn" id="4_rnvgy"]
+[ext_resource type="PackedScene" uid="uid://dcbqvypjtkxhm" path="res://scenes/flag.tscn" id="6_mwv4e"]
+[ext_resource type="PackedScene" uid="uid://p3dox7tfpt6n" path="res://scenes/wraith.tscn" id="7_sc3bh"]
+[ext_resource type="PackedScene" uid="uid://dyso6ak7f3w4k" path="res://scenes/coin_sound.tscn" id="8_lr7ju"]
+
+[node name="FifthLevel" type="Node2D"]
+script = ExtResource("1_sa5v5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(577, 324)
+scale = Vector2(3, 3)
+texture = ExtResource("1_qft4y")
+
+[node name="player" parent="." instance=ExtResource("2_se6ok")]
+position = Vector2(48, 440)
+START_POS = Vector2(48, 440)
+
+[node name="Floor" type="CharacterBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Floor"]
+position = Vector2(0, 500)
+polygon = PackedVector2Array(-2, -32, 138, 28, 269, 50, 413, 87, 508, 118, 714, 115, 872, 130, 901, 103, 942, 103, 995, 72, 1025, 79, 1058, 69, 1154, 16, 1150, 142, 3, 145)
+
+[node name="Borders" parent="." instance=ExtResource("3_g1i8g")]
+
+[node name="balrog" parent="." instance=ExtResource("4_rnvgy")]
+position = Vector2(680, 553)
+
+[node name="Star" parent="." instance=ExtResource("6_mwv4e")]
+position = Vector2(488, 587)
+
+[node name="Star2" parent="." instance=ExtResource("6_mwv4e")]
+position = Vector2(918, 581)
+
+[node name="wraith" parent="." instance=ExtResource("7_sc3bh")]
+position = Vector2(334, 459)
+move_distance = 50.0
+
+[node name="wraith2" parent="." instance=ExtResource("7_sc3bh")]
+position = Vector2(857, 605)
+move_distance = 30.0
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 907.0
+offset_top = 3.0
+offset_right = 1154.0
+offset_bottom = 45.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 30
+text = "Mines of Noria"
+
+[node name="coin_sound" parent="." instance=ExtResource("8_lr7ju")]
+
+[connection signal="level_reset" from="player" to="." method="_on_player_level_reset"]

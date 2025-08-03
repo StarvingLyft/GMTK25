@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://dcbqvypjtkxhm"]
 
 [ext_resource type="Script" path="res://scenes/flag.gd" id="1_jej32"]
-[ext_resource type="Texture2D" uid="uid://cy2mjajvmb1e8" path="res://assets/Fonts/kenney/PNG/White/1x/star.png" id="2_sydhs"]
 [ext_resource type="Texture2D" uid="uid://cbplofkvtx10s" path="res://assets/Fonts/question.png" id="2_yq2ar"]
+[ext_resource type="Texture2D" uid="uid://dr6d2t8h2l56a" path="res://assets/Fonts/kenney/PNG/White/1x/medal1.png" id="3_1tm32"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qvfrc"]
 size = Vector2(32, 34)
@@ -19,6 +19,6 @@ offset = Vector2(0, -2.08)
 
 [node name="trueIcon" type="Sprite2D" parent="."]
 visible = false
-texture = ExtResource("2_sydhs")
+texture = ExtResource("3_1tm32")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

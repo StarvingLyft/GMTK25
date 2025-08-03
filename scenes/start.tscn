@@ -1,0 +1,88 @@
+[gd_scene load_steps=9 format=3 uid="uid://dugpmah5jaudj"]
+
+[ext_resource type="Script" path="res://scenes/start.gd" id="1_2rnr0"]
+[ext_resource type="Texture2D" uid="uid://32inodnh7vn0" path="res://assets/backgrounds/Shire/PNG/HomeStart/Summer1.png" id="1_u03ff"]
+[ext_resource type="Texture2D" uid="uid://c4ofjg5bxiwk3" path="res://assets/Rogues32/32rogues/rogues.png" id="2_8d7lb"]
+[ext_resource type="Texture2D" uid="uid://cuo3t3u5rstbb" path="res://assets/Fonts/kenney/PNG/White/1x/buttonR.png" id="3_xelxl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nk2sp"]
+atlas = ExtResource("2_8d7lb")
+region = Rect2(32, 128, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2emjl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nk2sp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bretk"]
+atlas = ExtResource("2_8d7lb")
+region = Rect2(128, 192, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4xik7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bretk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Start" type="Node2D"]
+script = ExtResource("1_2rnr0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(576, 324)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_u03ff")
+
+[node name="gandalf" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(652, 566)
+scale = Vector2(3.5, 3.9375)
+sprite_frames = SubResource("SpriteFrames_2emjl")
+flip_h = true
+
+[node name="bilbo" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(510, 565)
+scale = Vector2(2.628, 2.328)
+sprite_frames = SubResource("SpriteFrames_4xik7")
+flip_h = true
+
+[node name="Label" type="Label" parent="."]
+offset_left = 25.0
+offset_top = 455.0
+offset_right = 257.0
+offset_bottom = 624.0
+text = "The Dark Lord is on the rise!
+
+You, Dangalf the Wizard, must lead Gilbo Gabbins to collect the Loops of Power and throw them into the Sea of Nordor"
+autowrap_mode = 2
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 953.0
+offset_top = 601.0
+offset_right = 997.0
+offset_bottom = 626.0
+text = "Press
+"
+autowrap_mode = 2
+
+[node name="Label3" type="Label" parent="."]
+offset_left = 1062.0
+offset_top = 600.0
+offset_right = 1106.0
+offset_bottom = 625.0
+text = "for next"
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(1028, 612)
+texture = ExtResource("3_xelxl")

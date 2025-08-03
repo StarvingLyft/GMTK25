@@ -1,12 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://du6f7f3t44div"]
+[gd_scene load_steps=12 format=3 uid="uid://du6f7f3t44div"]
 
 [ext_resource type="Texture2D" uid="uid://bpdneyxh1o4ra" path="res://assets/backgrounds/Shire/PNG/summer 2/Summer2.png" id="1_epunl"]
+[ext_resource type="Script" path="res://scenes/first_level.gd" id="1_idax6"]
 [ext_resource type="PackedScene" uid="uid://bnp6swc2iccx3" path="res://scenes/borders.tscn" id="2_fnfjn"]
 [ext_resource type="PackedScene" uid="uid://d1yjmru83wfae" path="res://scenes/ground.tscn" id="2_gtdg4"]
 [ext_resource type="PackedScene" uid="uid://bkjfd5nktiw5g" path="res://scenes/player.tscn" id="4_gmhir"]
 [ext_resource type="PackedScene" uid="uid://dcbqvypjtkxhm" path="res://scenes/flag.tscn" id="5_rsb5d"]
+[ext_resource type="PackedScene" uid="uid://p3dox7tfpt6n" path="res://scenes/wraith.tscn" id="6_vy4cy"]
+[ext_resource type="Texture2D" uid="uid://brischusx3bca" path="res://assets/Fonts/kenney/PNG/White/1x/arrowRight.png" id="8_j4gca"]
+[ext_resource type="Texture2D" uid="uid://6ilnbelcfdys" path="res://assets/Fonts/kenney/PNG/White/1x/arrowLeft.png" id="9_m2xpu"]
+[ext_resource type="Texture2D" uid="uid://cuo3t3u5rstbb" path="res://assets/Fonts/kenney/PNG/White/1x/buttonR.png" id="10_ku06j"]
+[ext_resource type="PackedScene" uid="uid://dyso6ak7f3w4k" path="res://scenes/coin_sound.tscn" id="11_30bee"]
 
 [node name="FirstLevel" type="Node2D"]
+script = ExtResource("1_idax6")
 
 [node name="Background" type="Sprite2D" parent="."]
 z_index = -1
@@ -19,7 +26,7 @@ offset = Vector2(1152, 648)
 [node name="ground" parent="." instance=ExtResource("2_gtdg4")]
 position = Vector2(25, 615)
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("4_gmhir")]
+[node name="player" parent="." instance=ExtResource("4_gmhir")]
 position = Vector2(51, 484)
 
 [node name="Star" parent="." instance=ExtResource("5_rsb5d")]
@@ -27,3 +34,56 @@ position = Vector2(353, 410)
 
 [node name="Star2" parent="." instance=ExtResource("5_rsb5d")]
 position = Vector2(788, 410)
+
+[node name="wraith" parent="." instance=ExtResource("6_vy4cy")]
+position = Vector2(559, 409)
+move_distance = 0.0
+move_time_left = 100.0
+move_time_right = 100.0
+
+[node name="Label" type="Label" parent="."]
+offset_left = 589.0
+offset_top = 192.0
+offset_right = 1099.0
+offset_bottom = 267.0
+text = "Gilbo is scared to leave his home and asks Dangalf to travel ahead
+Gilbo can only follow in Dangalf's exact footsteps
+Plan a path avoiding dangers and collect all loops"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 145.0
+offset_top = 208.0
+offset_right = 219.0
+offset_bottom = 234.0
+text = "to move
+"
+
+[node name="Label3" type="Label" parent="."]
+offset_left = 50.0
+offset_top = 243.0
+offset_right = 207.0
+offset_bottom = 269.0
+text = "Space to jump"
+
+[node name="Label4" type="Label" parent="."]
+offset_left = 99.0
+offset_top = 279.0
+offset_right = 256.0
+offset_bottom = 305.0
+text = "to call Gilbo"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(106, 219)
+texture = ExtResource("8_j4gca")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(61, 219)
+texture = ExtResource("9_m2xpu")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(65, 291)
+texture = ExtResource("10_ku06j")
+
+[node name="coin_sound" parent="." instance=ExtResource("11_30bee")]
+
+[connection signal="level_reset" from="player" to="." method="_on_player_level_reset"]

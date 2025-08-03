@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dyso6ak7f3w4k"]
+
+[ext_resource type="AudioStream" uid="uid://b2wvlu6t07rxk" path="res://assets/audio/Coin01.mp3" id="1_5g6cc"]
+
+[node name="coin_sound" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_5g6cc")

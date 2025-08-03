@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://cesice3fjvrmk"]
+
+[ext_resource type="Texture2D" uid="uid://drkf4rcjrrvys" path="res://assets/Rogues32/32rogues/monsters.png" id="1_dfloi"]
+[ext_resource type="Script" path="res://scenes/balrog.gd" id="1_lf331"]
+[ext_resource type="Texture2D" uid="uid://cbplofkvtx10s" path="res://assets/Fonts/question.png" id="2_vq866"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5rqqk"]
+atlas = ExtResource("1_dfloi")
+region = Rect2(32, 352, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_poynq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5rqqk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="balrog" type="Area2D"]
+scale = Vector2(5, 5)
+script = ExtResource("1_lf331")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+build_mode = 1
+polygon = PackedVector2Array(6, -13, 9, -13, 13, -8, 14, -4, 15, 7, 14, 11, 10, 6, 8, 10, 6, 7, 4, 7, 6, 12, 3, 14, 2, 4, -2, 3, 0, 9, -5, 11, -8, 15, -13, 12, -12, 7, -13, 2, -12, -11, -7, -15, -4, -15)
+
+[node name="qMark" type="Sprite2D" parent="."]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_vq866")
+
+[node name="trueIcon" type="AnimatedSprite2D" parent="."]
+visible = false
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_poynq")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
