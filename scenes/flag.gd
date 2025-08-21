@@ -2,7 +2,7 @@ extends Area2D
 
 
 func _on_body_entered(body):
-	if $trueIcon.visible:
+	if $trueIcon.visible and visible:
 		get_parent().get_node("coin_sound").play()
 		hide()
 		get_parent().flag_count-=1

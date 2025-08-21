@@ -44,7 +44,7 @@ func _physics_process(delta):
 
 func _input(event: InputEvent) -> void:
 	# Add controls to start/stop recording and to trigger the replay.
-	if event.is_action_pressed("record_toggle"):
+	if event.is_action_pressed("record_toggle") and recorded_inputs.size()>0:
 		if is_recording:
 			stop_recording()
 			position = START_POS
